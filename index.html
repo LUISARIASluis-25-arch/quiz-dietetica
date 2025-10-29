@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Dietética</title>
+    <style>body{font-family:Arial;margin:20px;}h3{margin:20px 0;}label{display:block;margin:5px 0;}</style>
+</head>
+<body>
+    <h1>Quiz: Dietética y Nutrición (10 preg. • 2 pts c/u)</h1>
+    <div id="id">ID único: <span id="sid"></span></div>
+    <form id="quiz">
+        <h3>1. ¿Qué estudia la Nutrición? <input type="radio" name="q1" value="a"> Procesos biológicos <input type="radio" name="q1" value="b"> Planificación</h3>
+        <h3>2. Pilares: <input type="radio" name="q2" value="a"> Equilibrio, variedad, moderación <input type="radio" name="q2" value="b"> Solo proteínas</h3>
+        <h3>3. Fuente de energía: <input type="radio" name="q3" value="b"> Carbohidratos <input type="radio" name="q3" value="c"> Grasas</h3>
+        <h3>4. Vitaminas liposolubles: <input type="radio" name="q4" value="b"> A,D,E,K <input type="radio" name="q4" value="a"> C,B</h3>
+        <h3>5. Base energética: <input type="radio" name="q5" value="b"> Cereales/legumbres <input type="radio" name="q5" value="a"> Frutas</h3>
+        <h3>6. Fibra soluble: <input type="radio" name="q6" value="a"> Control glucosa <input type="radio" name="q6" value="c"> Estreñimiento</h3>
+        <h3>7. Plato Harvard mitad: <input type="radio" name="q7" value="c"> Vegetales/frutas <input type="radio" name="q7" value="a"> Granos</h3>
+        <h3>8. Embarazo: <input type="radio" name="q8" value="b"> Folato/hierro/energía <input type="radio" name="q8" value="a"> Azúcar</h3>
+        <h3>9. Tercera edad: <input type="radio" name="q9" value="b"> Proteínas/Vit D <input type="radio" name="q9" value="a"> Dulces</h3>
+        <h3>10. % calórico: <input type="radio" name="q10" value="c"> Carbs complejos <input type="radio" name="q10" value="d"> Azúcares</h3>
+        <button type="button" onclick="calcular()">Calcular</button>
+    </form>
+    <div id="result" style="display:none;"><h2 id="p"></h2><p id="m"></p><p>ID: <span id="id2"></span></p></div>
+    <script>
+        const sid = 'ID_'+Math.random().toString(36).substr(2,9); document.getElementById('sid').innerText=sid; document.getElementById('id2').innerText=sid;
+        const resp={q1:'a',q2:'a',q3:'b',q4:'b',q5:'b',q6:'a',q7:'c',q8:'b',q9:'b',q10:'c'};
+        function calcular(){let pts=0;for(let i=1;i<=10;i++){const s=document.querySelector(`input[name="q${i}"]:checked`);if(s&&s.value===resp[`q${i}`])pts+=2;}
+        const pc=(pts/20)*100;let msg='';if(pc==100)msg='¡Perfecto!';else if(pc>=70)msg='¡Bien!';else msg='¡Estudia más!';document.getElementById('p').innerHTML=`${pts}/20`;document.getElementById('m').innerText=msg;document.getElementById('result').style.display='block';}
+    </script>
+</body>
+</html>Primer commit
